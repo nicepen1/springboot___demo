@@ -1,6 +1,5 @@
 Proje Hakkinda:
 
-Bu projede Mebitech firmasinin istegi uzerine kurgulanmistir.
 Spring boot framework uzerinde hibernate ile basit crud operationlarin gosterimi amaclanmistir.
 
 

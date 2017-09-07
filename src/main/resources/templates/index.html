@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Boot Thymeleaf Hello World Example</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" type="text/css"
+          href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" th:href="@{/css/main.css}"
+          href="../../css/main.css" />
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Spring Boot Demo</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="addPage">Add Employee</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="starter-template">
+        <h1>Spring Boot Demo </h1>
+        <h3>
+            Employee List
+        </h3>
+    </div>
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Salary</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${items}">
+
+            <td th:text="${item.name}">name</td>
+            <td th:text="${item.surname}">surname</td>
+            <td th:text="${item.salary}">salary</td>
+
+            <td>
+                <form th:action="@{/employee/} + ${item.employeeId}" th:method="delete">
+                    <input type="submit" value="Delete" name="delete" />
+                </form>
+            </td>
+            <td>
+                <form th:action="@{/updateEmployee/} + ${item.employeeId}" th:method="post">
+                    <input type="submit" value="update" name="update" />
+                </form>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+
+
+
+</div>
+<!-- /.container -->
+
+<script type="text/javascript"
+        src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+</html>
